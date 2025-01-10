@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Form.css';
 
 function Form() {
@@ -8,10 +9,11 @@ function Form() {
     content: '',
     date: '',
     phone: '',
-    email: ''
+    email: '',
   });
 
-  
+  const navigate = useNavigate(); 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,13 +22,13 @@ function Form() {
     }));
   };
 
-  
   const handleSubmit = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-    localStorage.setItem('blogs', JSON.stringify([...existingBlogs, formData])); 
-    alert('Blog saved successfully!'); 
-    setFormData({ title: '', author: '', content: '', date: '', phone: '', email: '' }); 
+    localStorage.setItem('blogs', JSON.stringify([...existingBlogs, formData]));
+    alert('Blog saved successfully!');
+    setFormData({ title: '', author: '', content: '', date: '', phone: '', email: '' });
+    navigate('./view'); 
   };
 
   return (
@@ -36,19 +38,50 @@ function Form() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="title">Blog Title</label>
-            <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} placeholder="Enter blog title" required/>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder="Enter blog title"
+              required
+            />
           </div>
           <div className="form-group">
             <label htmlFor="author">Author</label>
-            <input type="text" id="author" name="author" value={formData.author} onChange={handleChange} placeholder="Enter author name" required/>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              value={formData.author}
+              onChange={handleChange}
+              placeholder="Enter author name"
+              required
+            />
           </div>
           <div className="form-group">
             <label htmlFor="content">Content</label>
-            <textarea id="content" name="content" rows="6" value={formData.content} onChange={handleChange} placeholder="Write your blog here..." required></textarea>
+            <textarea
+              id="content"
+              name="content"
+              rows="6"
+              value={formData.content}
+              onChange={handleChange}
+              placeholder="Write your blog here..."
+              required
+            ></textarea>
           </div>
           <div className="form-group">
             <label htmlFor="date">Date</label>
-            <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} required/>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="form-group">
             <label htmlFor="phone">Phone Number</label>
