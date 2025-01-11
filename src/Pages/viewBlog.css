@@ -60,3 +60,29 @@
     margin-top: 40px;
   }
   
+
+  /* ................ */
+
+  .search-and-sort {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 1rem;
+  }
+  
+  .sort-dropdown {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
